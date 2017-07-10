@@ -1,0 +1,28 @@
+{% extends "registration/base.html" %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+  <div class="text-center">
+    <h1>Admin Login</h1>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      {% bootstrap_messages %}
+
+      <form method="POST" class="form-horizontal" role="form">
+          {% bootstrap_form form %}
+      
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </div>
+      </form>
+
+      <div class="text-center">
+        <a href="">Forgotten password?</a>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
