@@ -1,0 +1,9 @@
+venv
+db.sqlite3
+*.pyc
+__pychache__
+.env
+.DS_Store
+.idea
+.vscode
+local_settings.py
