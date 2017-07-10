@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'^$', views.login, name='login'),
-    url(r'^dashboard/', include('restaurants.urls')),
+    url(r'^restaurants/', include('restaurants.urls')),
+    url(r'^cuisines/', include('cuisines.urls')),
 ]

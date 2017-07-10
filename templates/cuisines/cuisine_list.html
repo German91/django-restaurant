@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <h1>
+                    <span>Cuisines</span>
+                    
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_cuisine_modal">Add Cuisine</button>
+                    </span>
+                </h1>
+                <hr>
+
+                {% bootstrap_messages %}
+
+                <div class="row">
+                    {% for cuisine in cuisines  %}
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>{{ cuisine.name }}</h3>
+                                    <hr>
+
+                                    <a href="" class="btn btn-danger">Remove Cuisine</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include "cuisines/cuisine_add.html" %}
+{% endblock content %}  
