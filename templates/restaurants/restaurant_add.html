@@ -9,7 +9,7 @@
                 <h1>Add Restaurant</h1>
                 <hr>
 
-                <form method="post" class="form-horizontal">
+                <form method="post" class="form-horizontal">{% csrf_token %}
                     {% bootstrap_form form %}
 
                     <div class="form-group">
