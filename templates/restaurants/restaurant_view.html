@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12">
+        <h1>
+          {{ restaurant.name }}
+
+          <span class="pull-right">
+            <a href="{% url 'restaurant_archive' pk=restaurant.pk %}" class="btn btn-danger">Archive Restaurant</a>
+          </span>
+        </h1>
+        <hr>
+
+        {% bootstrap_messages %}
+
+        <form method="POST">{% csrf_token %}
+          {% bootstrap_form form %}
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update Restaurant</button>
+          </div>
+        </form>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <h1>Sections</h1>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
