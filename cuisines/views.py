@@ -21,4 +21,5 @@ def cuisine_list(request):
 def cuisine_delete(request, pk):
     cuisine = get_object_or_404(Cuisine, pk=pk)
     cuisine.delete()
+    messages.add_message(request, messages.SUCCESS, 'Cuisine successfully removed')
     return redirect('cuisine_list')

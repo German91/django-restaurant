@@ -25,7 +25,7 @@
                                     <h3>{{ cuisine.name }}</h3>
                                     <hr>
 
-                                    <a href="" class="btn btn-danger">Remove Cuisine</a>
+                                    <a href="{% url 'cuisine_delete' pk=cuisine.pk %}" class="btn btn-danger">Remove Cuisine</a>
                                 </div>
                             </div>
                         </div>
