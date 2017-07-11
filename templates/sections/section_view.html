@@ -14,16 +14,29 @@
 
       <div class="row">
           <div class="col-xs-12 col-sm-12">
-            <h1>{{ section.name }}</h1>
+            <h1>
+                <span>{{ section.name }}</span>
+
+                <span class="pull-right">
+                    <button type="button" data-toggle="modal" data-target="#add_item_modal" class="btn btn-primary">Add New Item</button>
+                </span>
+            </h1>
             <hr>
           </div>
       </div>
 
       <div class="row">
-          <div class="col-xs-12 col-sm-6">
+          <div class="col-xs-12 col-sm-4">
               <div class="panel panel-default">
                   <div class="panel-body">
+                    <form class="form-inline" action="{% url 'category_add' %}" method="post">{% csrf_token %}
+                        <input type="hidden" name="section" value="{{ section.pk }}" />
+                        {% bootstrap_form category_form %}
 
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="Create new category">Add Category</button>
+                        </div>
+                    </form>
                   </div>
               </div>
           </div>
@@ -37,6 +50,16 @@
                           <div class="col-xs-12 col-sm-6">
                               <h3>Categories</h3>
                               <hr>
+
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-10">
+                                      <div class="list-group add_item_button" id="sortable">
+                                        {% for category in categories %}
+                                            <a role="button" onclick="showButton({{ category.pk }})" class="list-group-item">{{ category.name }}</a>
+                                        {% endfor %}
+                                    </div>
+                                  </div>
+                              </div>
                           </div>
 
                           <div class="col-xs-12 col-sm-6">
@@ -49,4 +72,12 @@
           </div>
       </div>
   </div>
+  
+  <script>
+      var showItemModal = function (pk) {
+        category = pk;
+      }
+  </script>
+
+  {% include "sections/add_item.html" %}
 {% endblock content %}
