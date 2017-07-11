@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+  <div class="container-fluid">
+    
+        <ol class="breadcrumb">
+            <li><a href="{% url 'restaurant_list' %}">All Restaurants</a></li>
+            <li><a href="{% url 'restaurant_view' slug=section.restaurant.slug %}">{{ section.restaurant.name }}</a></li>
+            <li class="active">{{ section.name }}</li>
+        </ol>
+    
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <h1>{{ section.name }}</h1>
+            <hr>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-6">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div class="row">
+                          <div class="col-xs-12 col-sm-6">
+                              <h3>Categories</h3>
+                              <hr>
+                          </div>
+
+                          <div class="col-xs-12 col-sm-6">
+                              <h3>Items</h3>
+                              <hr>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+{% endblock content %}

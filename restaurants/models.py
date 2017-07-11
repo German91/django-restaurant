@@ -6,7 +6,7 @@ from cuisines.models import Cuisine
 class Restaurant(models.Model):
     name = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=50, unique=True)
-    cuisine = models.ForeignKey(Cuisine)
+    cuisine = models.OneToOneField(Cuisine)
     phone_number = models.CharField(max_length=10)
     description = models.TextField(max_length=300, blank=True, null=True)
     promotion = models.TextField(max_length=400, blank=True, null=True)

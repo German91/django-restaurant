@@ -4,6 +4,8 @@ from django.contrib import messages
 
 from .forms import AddRestaurantForm
 from .models import Restaurant
+from sections.models import Section
+from sections.forms import SectionForm
 
 @login_required
 def restaurant_list(request):
@@ -23,14 +25,16 @@ def restaurant_add(request):
 
 @login_required
 def restaurant_view(request, slug):
+    section_form = SectionForm()
     restaurant = get_object_or_404(Restaurant, slug=slug)
+    sections = Section.objects.filter(restaurant=restaurant)
     form = AddRestaurantForm(instance=restaurant)
     if request.method == 'POST':
         form = AddRestaurantForm(request.POST, instance=restaurant)
         if form.is_valid():
             form.save(commit=True)
             messages.add_message(request, messages.SUCCESS, 'Restaurant successfully updated')
-    return render(request, 'restaurants/restaurant_view.html', {'restaurant': restaurant, 'form': form})
+    return render(request, 'restaurants/restaurant_view.html', {'restaurant': restaurant, 'form': form, 'section_form': section_form, 'sections': sections})
 
 @login_required
 def restaurant_archive(request, pk):

@@ -4,6 +4,11 @@
 
 {% block content %}
   <div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'restaurant_list' %}">All Restaurants</a></li>
+        <li class="active">{{ restaurant.name }}</li>
+    </ol>
+
     <div class="row">
       <div class="col-xs-12 col-sm-12">
         <h1>
@@ -25,10 +30,41 @@
           </div>
         </form>
 
-        <div class="row">
-          <div class="col-xs-12 col-sm-12">
-            <h1>Sections</h1>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12">
+                <form class="form-inline" method="post" action="{% url 'section_add' %}">{% csrf_token %}
+                  <input type="hidden" name="restaurant" value="{{ restaurant.pk }}" />
+                  {% bootstrap_form section_form %}
+
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <h3>Menu Sections</h3>
             <hr>
+
+            <div class="row">
+              {% for section in sections %}
+                <div class="col-xs-12 col-sm-3">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <h1>{{ section.name }}</h1>
+                      <hr>
+
+                      <div class="pull-right">
+                        <a href="{% url 'section_view' slug=section.slug %}" class="btn btn-primary">Manage</a>
+                        <a href="{% url 'section_delete' pk=section.pk %}" class="btn btn-danger">Remove</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>

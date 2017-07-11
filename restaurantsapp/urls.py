@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^$', views.login, name='login'),
     url(r'^restaurants/', include('restaurants.urls')),
     url(r'^cuisines/', include('cuisines.urls')),
+    url(r'^sections/', include('sections.urls')),
 ]
