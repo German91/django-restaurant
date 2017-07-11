@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^cuisines/', include('cuisines.urls')),
     url(r'^sections/', include('sections.urls')),
     url(r'^categories/', include('categories.urls')),
+    url(r'^items/', include('items.urls'),)
 ]

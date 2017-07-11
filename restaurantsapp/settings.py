@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'cuisines',
     'sections',
     'categories',
+    'items',
 ]
 
 MIDDLEWARE_CLASSES = [

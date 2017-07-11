@@ -7,6 +7,8 @@ from .forms import SectionForm
 from restaurants.models import Restaurant
 from categories.models import Category
 from categories.forms import CategoryForm
+from items.forms import AddItemForm
+from items.filters import ItemFilter
 
 @login_required
 def section_add(request):
@@ -27,7 +29,14 @@ def section_delete(request, pk):
 
 @login_required
 def section_view(request, slug):
+    item_form = AddItemForm()
     category_form = CategoryForm()
     section = get_object_or_404(Section, slug=slug)
     categories = Category.objects.filter(section=section)
-    return render(request, 'sections/section_view.html', {'section': section, 'categories': categories, 'category_form': category_form})
+
+    if request.method == 'POST':
+        item_form = AddItemForm(request.POST)
+        if item_form.is_valid():
+            item_form.save(commit=True)
+            return redirect('section_view', slug=section.slug)
+    return render(request, 'sections/section_view.html', {'section': section, 'categories': categories, 'category_form': category_form, 'item_form': item_form})
