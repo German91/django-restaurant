@@ -157,7 +157,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['localhost', '121.0.0.1', 'django-restaurants.herokuapp.com']
 
-DEBUG = False
+DEBUG = True
 
 if os.environ.get('ENV_VAR') == 'prod':
     from aws_settings import *
