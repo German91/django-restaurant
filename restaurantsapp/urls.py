@@ -19,11 +19,12 @@ from django.contrib.auth import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
-    url(r'^$', views.login, name='login'),
+    url(r'^$', views.login, name='login', kwargs={'redirect_authenticated_user': True}),
     url(r'^restaurants/', include('restaurants.urls')),
     url(r'^cuisines/', include('cuisines.urls')),
     url(r'^sections/', include('sections.urls')),
     url(r'^categories/', include('categories.urls')),
-    url(r'^items/', include('items.urls'),)
+    url(r'^items/', include('items.urls')),
 ]
