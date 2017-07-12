@@ -7,4 +7,4 @@ class AddRestaurantForm(forms.ModelForm):
         class Meta:
             cuisine = forms.ModelChoiceField(queryset=Cuisine.objects.all())
             model = Restaurant
-            fields = ('name', 'cuisine', 'phone_number', 'description', 'promotion',)
+            fields = ('name', 'cuisine', 'phone_number', 'description', 'promotion', 'logo',)

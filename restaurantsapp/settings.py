@@ -144,6 +144,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, "static"),
 ]
@@ -155,6 +158,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['localhost', '121.0.0.1', 'django-restaurants.herokuapp.com']
 
 DEBUG = False
+
+if os.environ.get('ENV_VAR') == 'prod':
+    from aws_settings import *
 
 try:
     from .local_settings import *

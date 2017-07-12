@@ -11,6 +11,7 @@ class Restaurant(models.Model):
     description = models.TextField(max_length=300, blank=True, null=True)
     promotion = models.TextField(max_length=400, blank=True, null=True)
     archived = models.BooleanField(default=False)
+    logo = models.FileField(blank=True, null=True, upload_to='restaurants/')
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
