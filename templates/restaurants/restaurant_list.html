@@ -24,6 +24,12 @@
                       <hr>
                     </div>
 
+                    {% if restaurant.logo %}
+                      <div class="thumbnail">
+                        <img src="{{ restaurant.logo.url }}" alt="restaurant-logo" />
+                      </div>
+                    {% endif %}
+
                     <p>{{ restaurant.description }}</p>
                   </div>
 
