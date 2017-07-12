@@ -8,7 +8,6 @@ from restaurants.models import Restaurant
 from categories.models import Category
 from categories.forms import CategoryForm
 from items.forms import AddItemForm
-from items.filters import ItemFilter
 
 @login_required
 def section_add(request):

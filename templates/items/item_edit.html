@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'restaurant_list' %}">All Restaurants</a></li>
+            <li><a href="{% url 'restaurant_view' slug=item.category.section.restaurant.slug %}">{{ item.category.section.restaurant.name }}</a></li>
+            <li><a href="{% url 'section_view' slug=item.category.section.slug %}">{{ item.category.section.name }}</a></li>
+            <li class="active">{{ item.name }}</li>
+        </ol>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <h1>
+                    <span>Edit {{ item.name }}</span>
+                    
+                    <span class="pull-right">
+                        <a href="{% url 'item_delete' pk=item.pk %}" class="btn btn-danger">Remove Item</a>
+                    </span>
+                </h1>
+                <hr>
+
+                {% bootstrap_messages %}
+
+                <form method="post">{% csrf_token %}
+                    {% bootstrap_form form %}
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

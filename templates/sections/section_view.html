@@ -22,6 +22,8 @@
                 </span>
             </h1>
             <hr>
+
+            {% bootstrap_messages %}
           </div>
       </div>
 
@@ -94,7 +96,8 @@
                     $('#items').empty();
 
                     response.forEach(({ fields }) => {
-                        var item = `<a href="" class="list-group-item">${fields.name}</a>`;
+                        var url = `/items/${fields.slug}/edit`;
+                        var item = `<a href=${url} class="list-group-item">${fields.name}</a>`;
 
                         $(item).appendTo('#items').hide().fadeIn(1000);
                     });
