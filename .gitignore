@@ -7,3 +7,4 @@ __pychache__
 .idea
 .vscode
 local_settings.py
+media/
